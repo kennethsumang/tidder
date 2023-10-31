@@ -49,6 +49,16 @@ export default function AppSideBar() {
           r/reddit
         </ListItem>
 
+        <ListItem
+          onClick={() => router.push('/sub/nosleep')}
+          selected={pathname.startsWith('/sub/nosleep')}
+        >
+          <ListItemPrefix>
+            <DocumentTextIcon className="h-5 w-5" />
+          </ListItemPrefix>
+          r/nosleep
+        </ListItem>
+
         <ListItem>
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
