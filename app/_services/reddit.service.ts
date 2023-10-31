@@ -1,5 +1,5 @@
 import {ErrorResponse, SuccessResponse} from "@/app/_types/common";
-import {PostList} from "@/app/_types/reddit";
+import {CommentList, PostList} from "@/app/_types/reddit";
 import RedditRepository from "@/app/_repositories/reddit.repository";
 
 /**
@@ -39,5 +39,32 @@ export default class RedditService {
         }
       };
     }
+  }
+
+  /**
+   * Requests for specific post
+   * @param {string} subreddit
+   * @param {string} id
+   * @param {string} title
+   * @returns {Promise<SuccessResponse<[PostList, CommentList]>|ErrorResponse>}
+   */
+  requestSpecificPost = async (subreddit: string, id: string, title: string): Promise<SuccessResponse<[PostList, CommentList]>|ErrorResponse> => {
+    try {
+      const permalink = `/r/${subreddit}/comments/${id}/${title}.json`;
+      const response = await this.redditRepository.requestSpecificPost(permalink);
+      return {
+        success: true,
+        data: response as [PostList, CommentList],
+      };
+    } catch (e) {
+      return {
+        success: false,
+        error: {
+          stack: (e as Error).stack,
+          message: (e as Error).message,
+        }
+      };
+    }
+
   }
 }

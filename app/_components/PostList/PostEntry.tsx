@@ -34,7 +34,7 @@ export default function PostEntry({ post }: Props) {
   }
 
   return (
-    <Card className="m-3 p-3">
+    <Card className="m-3 p-3 cursor-pointer">
       <CardBody>
         <div className="flex flex-col">
           <Typography variant="h6">
