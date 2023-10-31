@@ -1,14 +1,6 @@
 import Image from 'next/image';
-import RedditService from "@/app/_services/reddit.service";
-
-async function fetchReddit() {
-  return (new RedditService()).requestPostList('reddit', 10);
-}
 
 export default async function Home() {
-  const reddit = await fetchReddit();
-  console.log(reddit);
-  
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
