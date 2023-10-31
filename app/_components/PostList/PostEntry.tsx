@@ -2,6 +2,7 @@ import { PostChild } from "@/app/_types/reddit";
 import { Card, CardBody, Typography } from "../MaterialTailwind";
 import { ArrowUpIcon } from "@heroicons/react/24/solid";
 import { ChatBubbleLeftIcon, ClockIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import tz from "dayjs/plugin/timezone";
@@ -22,6 +23,8 @@ interface Props {
  * @author Kenneth Sumang
  */
 export default function PostEntry({ post }: Props) {
+  const router = useRouter();
+
   /**
    * Convert to machine timezone and get relative time
    * @param utc
@@ -34,7 +37,10 @@ export default function PostEntry({ post }: Props) {
   }
 
   return (
-    <Card className="m-3 p-3 cursor-pointer">
+    <Card
+      className="m-3 p-3 cursor-pointer"
+      onClick={() => router.push(`/sub/${post.data.subreddit}/${post.data.id}`)}
+    >
       <CardBody>
         <div className="flex flex-col">
           <Typography variant="h6">

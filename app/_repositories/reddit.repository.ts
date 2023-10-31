@@ -32,17 +32,14 @@ export default class RedditRepository {
 
   /**
    * Request for specific post
-   * @param   {string} permalink
+   * @param   {string} subreddit
+   * @param   {string} id
    * @returns {Promise<[PostList, CommentList]>}
    */
-  requestSpecificPost = async (permalink: string): Promise<[PostList, CommentList]> => {
+  requestSpecificPost = async (subreddit: string, id: string): Promise<[PostList, CommentList]> => {
     try {
-      if (permalink[permalink.length - 1] === '/') {
-        permalink = permalink.slice(0, -1);
-      }
-
       const response = await fetch(
-        `https://reddit.com/${permalink}.json`,
+        `https://reddit.com/r/${subreddit}/comments/${id}.json`,
         {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }

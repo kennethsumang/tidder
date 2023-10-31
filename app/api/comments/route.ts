@@ -5,26 +5,12 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const subreddit = searchParams.get('subreddit');
   const id = searchParams.get('id');
-  const title = searchParams.get('title');
 
   if (!id) {
     const error = {
       error: {
         code: 400,
         message: 'Invalid ID.'
-      }
-    };
-    return new Response(JSON.stringify(error), {
-      status: 400,
-      statusText: 'Bad Request',
-    });
-  }
-
-  if (!title) {
-    const error = {
-      error: {
-        code: 400,
-        message: 'Invalid title.'
       }
     };
     return new Response(JSON.stringify(error), {
@@ -46,11 +32,7 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  const response = await (new RedditService()).requestSpecificPost(
-    subreddit,
-    id,
-    title
-  );
+  const response = await (new RedditService()).requestSpecificPost(subreddit, id);
 
   if (!response.success) {
     const error = {

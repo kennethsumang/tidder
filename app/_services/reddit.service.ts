@@ -45,13 +45,11 @@ export default class RedditService {
    * Requests for specific post
    * @param {string} subreddit
    * @param {string} id
-   * @param {string} title
    * @returns {Promise<SuccessResponse<[PostList, CommentList]>|ErrorResponse>}
    */
-  requestSpecificPost = async (subreddit: string, id: string, title: string): Promise<SuccessResponse<[PostList, CommentList]>|ErrorResponse> => {
+  requestSpecificPost = async (subreddit: string, id: string): Promise<SuccessResponse<[PostList, CommentList]>|ErrorResponse> => {
     try {
-      const permalink = `/r/${subreddit}/comments/${id}/${title}.json`;
-      const response = await this.redditRepository.requestSpecificPost(permalink);
+      const response = await this.redditRepository.requestSpecificPost(subreddit, id);
       return {
         success: true,
         data: response as [PostList, CommentList],
