@@ -32,9 +32,12 @@ export default async function Page({ params }: Props) {
     redirect(`/?error=reddit_not_found`);
   }
 
-  const posts = (response as SuccessResponse<PostList>).data;
+  const postList = (response as SuccessResponse<PostList>).data;
 
   return (
-    <PostListContainer posts={posts} />
+    <PostListContainer
+      postList={postList}
+      subreddit={params.subreddit}
+    />
   );
 }

@@ -11,6 +11,7 @@ import {
   ListItemPrefix,
   CardHeader,
   CardBody,
+  Spinner,
 } from "@material-tailwind/react";
 
 export {
@@ -24,4 +25,5 @@ export {
   ListItemPrefix,
   CardHeader,
   CardBody,
+  Spinner,
 };

@@ -16,7 +16,7 @@ export default class RedditRepository {
   requestSubreddit = async (subreddit: string, limit: number = 20, after: string = ''): Promise<PostList> => {
     try {
       const response = await fetch(
-        `https://reddit.com/r/${subreddit}.json?limit=${limit}&after=${after}`,
+        `https://reddit.com/r/${subreddit}.json?limit=${limit}&after=${after}&raw_json=1`,
         {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
