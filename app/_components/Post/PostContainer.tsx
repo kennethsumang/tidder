@@ -43,6 +43,9 @@ export default function PostContainer({ postList, commentList }: Props) {
             <Markdown remarkPlugins={[remarkGfm]} className="mt-3 mb-3">
               { postList.data.children[0].data.selftext }
             </Markdown>
+            <div>
+              <small>in /r/{ postList.data.children[0].data.subreddit } by { postList.data.children[0].data.author}</small>
+            </div>
             <div className="flex flex-row mt-2">
               <div className="flex flex-row mr-2">
                 <ArrowUpIcon className="h-4 w-4 mr-2" />
