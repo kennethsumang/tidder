@@ -40,7 +40,7 @@ export default function PostContainer({ postList, commentList }: Props) {
         <CardBody>
           <div className="flex flex-col">
             <Typography variant="h4">{ postList.data.children[0].data.title }</Typography>
-            <Markdown remarkPlugins={[remarkGfm]} className="mt-3 mb-3">
+            <Markdown remarkPlugins={[remarkGfm]} className="mt-3 mb-3 post-markdown-cont">
               { postList.data.children[0].data.selftext }
             </Markdown>
             <div>

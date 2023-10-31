@@ -26,3 +26,19 @@ body {
     rgb(var(--background-start-rgb));
   overflow-y: hidden;
 }
+
+.post-markdown-cont p {
+    margin-bottom: 1.5rem;
+}
+
+.post-markdown-cont a:link {
+    color: #551A8B;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.post-markdown-cont a:visited {
+    color: #551A8B;
+    text-decoration: underline;
+    cursor: pointer;
+}
