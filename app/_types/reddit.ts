@@ -14,6 +14,7 @@ interface PostChild {
     author: string;
     permalink: string;
     id: string;
+    selftext: string;
   }
 }
 
