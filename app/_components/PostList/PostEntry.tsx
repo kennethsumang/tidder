@@ -7,6 +7,8 @@ import utc from "dayjs/plugin/utc";
 import tz from "dayjs/plugin/timezone";
 import relativeTime from "dayjs/plugin/relativeTime";
 
+const removeMd = require('remove-markdown');
+
 dayjs.extend(utc);
 dayjs.extend(tz);
 dayjs.extend(relativeTime);
@@ -38,6 +40,11 @@ export default function PostEntry({ post }: Props) {
           <Typography variant="h6">
             { post.data.title }
           </Typography>
+          <div className="mb-3">
+            <p className="line-clamp-3">
+              { removeMd(post.data.selftext) }
+            </p>
+          </div>
           <div>
             <small>by { post.data.author }</small>
           </div>
