@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex flex-row">
           <AppSideBar />
-          <main className="overflow-y-auto">
+          <main className="overflow-y-auto flex flex-col w-full">
             {children}
           </main>
         </div>
