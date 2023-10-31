@@ -9,6 +9,8 @@ import {
   List,
   ListItem,
   ListItemPrefix,
+  CardHeader,
+  CardBody,
 } from "@material-tailwind/react";
 
 export {
@@ -20,4 +22,6 @@ export {
   List,
   ListItem,
   ListItemPrefix,
+  CardHeader,
+  CardBody,
 };

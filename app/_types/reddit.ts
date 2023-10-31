@@ -24,8 +24,8 @@ interface PostList {
     dist: number;
     modhash: string;
     geo_filter: unknown;
+    children: PostChild[];
   },
-  children: PostChild[]
 }
 
 interface CommentChild {

@@ -20,9 +20,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex flex-row">
           <AppSideBar />
-          <main className="overflow-y-auto flex flex-col w-full">
+          <div className="h-[calc(100vh)] overflow-y-auto flex flex-col w-full">
             {children}
-          </main>
+          </div>
         </div>
       </body>
     </html>
