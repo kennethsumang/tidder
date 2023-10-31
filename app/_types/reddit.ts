@@ -15,6 +15,8 @@ interface PostChild {
     permalink: string;
     id: string;
     selftext: string;
+    selftext_html: string;
+    num_comments: number;
   }
 }
 
