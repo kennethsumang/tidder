@@ -41,7 +41,7 @@ export default function AppSideBar() {
       </div>
       <List>
         {
-          SUBREDDIT_LIST.map((subreddit) => {
+          SUBREDDIT_LIST.map((subreddit: string) => {
             return (
               <ListItem
                 key={subreddit}
