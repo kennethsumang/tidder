@@ -14,6 +14,7 @@ import {
   PowerIcon,
 } from "@heroicons/react/24/outline";
 import { useRouter, usePathname } from "next/navigation";
+import {SUBREDDIT_LIST} from "@/app/_constants/reddit.constant";
 
 /**
  * AppSideBar component
@@ -39,32 +40,22 @@ export default function AppSideBar() {
         />
       </div>
       <List>
-        <ListItem
-          onClick={() => router.push('/sub/reddit')}
-          selected={pathname.startsWith('/sub/reddit')}
-        >
-          <ListItemPrefix>
-            <DocumentTextIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          r/reddit
-        </ListItem>
-
-        <ListItem
-          onClick={() => router.push('/sub/nosleep')}
-          selected={pathname.startsWith('/sub/nosleep')}
-        >
-          <ListItemPrefix>
-            <DocumentTextIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          r/nosleep
-        </ListItem>
-
-        <ListItem>
-          <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Log Out
-        </ListItem>
+        {
+          SUBREDDIT_LIST.map((subreddit) => {
+            return (
+              <ListItem
+                key={subreddit}
+                onClick={() => router.push(`/sub/${subreddit}`)}
+                selected={pathname.startsWith(`/sub/${subreddit}`)}
+              >
+                <ListItemPrefix>
+                  <DocumentTextIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                r/{subreddit}
+              </ListItem>
+            )
+          })
+        }
       </List>
     </Card>
   );
