@@ -42,7 +42,7 @@ interface CommentChild {
     body_html: string;
     permalink: string;
     ups: number;
-    replies: ''|CommentList;
+    replies?: ''|CommentList;
     created_utc: number;
   }
 }
