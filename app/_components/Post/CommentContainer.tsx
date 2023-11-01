@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import {ArrowUpIcon} from "@heroicons/react/24/solid";
 import {getRelativeTime} from "@/app/_libraries/date.library";
 import React from "react";
+import _ from "lodash";
 
 interface Props {
   comments: CommentChild[];
@@ -26,7 +27,13 @@ export default function CommentContainer({ comments }: Props) {
    * @returns {React.ReactNode}
    */
   function renderReplies(replies: CommentList): React.ReactNode {
-    const replyList = replies.data.children;
+    const replyList = _.filter(replies.data.children, (replyData) => {
+      return replyData.data.author && replyData.data.body;
+    }) as CommentChild[];
+
+    if (replyList.length === 0) {
+      return <></>;
+    }
 
     return (
       <>
@@ -39,7 +46,7 @@ export default function CommentContainer({ comments }: Props) {
               >
                 { renderCommentContainer(replyData) }
                 {
-                  (replyData.data.replies !== '')
+                  (replyData.data.replies)
                     ? renderReplies(replyData.data.replies)
                     : <></>
                 }
@@ -98,7 +105,7 @@ export default function CommentContainer({ comments }: Props) {
               <CardBody>
                 { renderCommentContainer(comment) }
                 {
-                  (comment.data.replies !== '')
+                  (comment?.data?.replies)
                     ? renderReplies(comment.data.replies)
                     : <></>
                 }
