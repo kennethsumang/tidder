@@ -43,6 +43,7 @@ interface CommentChild {
     permalink: string;
     ups: number;
     replies: ''|CommentList;
+    created_utc: number;
   }
 }
 
@@ -53,8 +54,8 @@ interface CommentList {
     dist: number;
     modhash: string;
     geo_filter: unknown;
+    children: CommentChild[];
   },
-  children: CommentChild[];
 }
 
 export type {

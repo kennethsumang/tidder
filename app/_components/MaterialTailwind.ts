@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardBody,
   Spinner,
+  IconButton,
 } from "@material-tailwind/react";
 
 export {
@@ -26,4 +27,5 @@ export {
   CardHeader,
   CardBody,
   Spinner,
+  IconButton,
 };
