@@ -43,12 +43,15 @@ export default function AppSideBar({ children }: { children: React.ReactNode }) 
   }
 
   /**
-   * Handles content click event
+   * Renders content
+   * @returns {React.JSX.Element}
    */
-  function handleContentClickEvent() {
-    if (isSmallDevice && isSidebarOpen) {
-      dispatch(setSidebarOpen(false));
-    }
+  function renderContent(): React.JSX.Element {
+    return (
+      <div className="h-[calc(100vh)] overflow-y-auto flex flex-col w-full">
+        {children}
+      </div>
+    );
   }
 
   return (
@@ -84,12 +87,11 @@ export default function AppSideBar({ children }: { children: React.ReactNode }) 
           </List>
         </Card>
       </div>
-      <div
-        className={`h-[calc(100vh)] overflow-y-auto flex flex-col w-full ${isSidebarOpen && isSmallDevice ? 'opacity-20' : ''}`}
-        onClick={() => handleContentClickEvent()}
-      >
-        {children}
-      </div>
+      {
+        (isSidebarOpen && isSmallDevice)
+          ? <div className="opacity-20 __disabled">{ renderContent() } </div>
+          : renderContent()
+      }
     </div>
 
   );
