@@ -42,3 +42,7 @@ body {
     text-decoration: underline;
     cursor: pointer;
 }
+
+div.__disabled {
+    pointer-events: none;
+}
