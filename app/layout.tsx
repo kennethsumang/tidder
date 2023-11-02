@@ -4,7 +4,6 @@ import './globals.css';
 import AppSideBar from "@/app/_components/AppSideBar";
 import AppBar from "@/app/_components/AppBar";
 import ReduxProvider from "@/app/_providers/ReduxProvider";
-import MediaQueryProvider from "@/app/_providers/MediaQueryProvider";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +21,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
-          <MediaQueryProvider />
           <div className="flex flex-col w-full">
             <AppBar />
             <AppSideBar>

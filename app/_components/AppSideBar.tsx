@@ -15,8 +15,8 @@ import { useRouter, usePathname } from "next/navigation";
 import {SUBREDDIT_LIST} from "@/app/_constants/reddit.constant";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "@/app/_store";
-import {useMediaQuery} from "@uidotdev/usehooks";
-import React from "react";
+import {useMediaQuery} from "usehooks-ts";
+import React, {useEffect} from "react";
 import {setSidebarOpen} from "@/app/_store/slices/app.slice";
 
 /**
@@ -29,6 +29,14 @@ export default function AppSideBar({ children }: { children: React.ReactNode }) 
   const router = useRouter();
   const pathname = usePathname();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isSmallDevice) {
+      dispatch(setSidebarOpen(false));
+    } else {
+      dispatch(setSidebarOpen(true));
+    }
+  }, [isSmallDevice]);
 
   /**
    * Handles subreddit click event
