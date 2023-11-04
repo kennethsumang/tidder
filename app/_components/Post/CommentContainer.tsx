@@ -1,12 +1,11 @@
 import {CommentChild, CommentList} from "@/app/_types/reddit";
 import {Card, CardBody, Chip, IconButton} from "@/app/_components/MaterialTailwind";
 import {ClockIcon, UserIcon} from "@heroicons/react/24/outline";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import {ArrowUpIcon} from "@heroicons/react/24/solid";
 import {getRelativeTime} from "@/app/_libraries/date.library";
 import React from "react";
 import _ from "lodash";
+import PostBodyMarkdown from "@/app/_components/PostBodyMarkdown";
 
 interface Props {
   comments: CommentChild[];
@@ -81,9 +80,7 @@ export default function CommentContainer({ comments, author }: Props) {
           }
         </div>
 
-        <Markdown remarkPlugins={[remarkGfm]} className="mb-3 post-markdown-cont">
-          { comment.data.body }
-        </Markdown>
+        <PostBodyMarkdown content={comment.data.body} className="mb-3" />
 
         <div className="flex flex-row mt-2">
           <div className="flex flex-row mr-2">
