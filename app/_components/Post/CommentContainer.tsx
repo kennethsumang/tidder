@@ -1,5 +1,5 @@
 import {CommentChild, CommentList} from "@/app/_types/reddit";
-import {Card, CardBody, IconButton} from "@/app/_components/MaterialTailwind";
+import {Card, CardBody, Chip, IconButton} from "@/app/_components/MaterialTailwind";
 import {ClockIcon, UserIcon} from "@heroicons/react/24/outline";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -10,13 +10,14 @@ import _ from "lodash";
 
 interface Props {
   comments: CommentChild[];
+  author: string;
 }
 
 /**
  * CommentCard component
  * @author Kenneth Sumang
  */
-export default function CommentContainer({ comments }: Props) {
+export default function CommentContainer({ comments, author }: Props) {
   if (comments.length === 0) {
     return <></>;
   }
@@ -70,9 +71,14 @@ export default function CommentContainer({ comments }: Props) {
           <IconButton className="w-6 h-6 mr-3 rounded-full">
             <UserIcon className="w-5 h-5" />
           </IconButton>
-          <div className="flex items-center">
+          <div className="flex items-center mr-3">
             { comment.data.author }
           </div>
+          {
+            comment.data.author === author
+              ? <Chip value="Author" color="blue" size="sm" />
+              : <></>
+          }
         </div>
 
         <Markdown remarkPlugins={[remarkGfm]} className="mb-3">

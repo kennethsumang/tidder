@@ -16,7 +16,7 @@ export default function PostContainer({ postList, commentList }: Props) {
   return (
     <div className="flex flex-col m-5">
       <PostCard post={postList.data.children[0]} />
-      <CommentContainer comments={commentList.data.children} />
+      <CommentContainer comments={commentList.data.children} author={postList.data.children[0].data.author} />
     </div>
   );
 }

@@ -13,6 +13,7 @@ import {
   CardBody,
   Spinner,
   IconButton,
+  Chip,
 } from "@material-tailwind/react";
 
 export {
@@ -28,4 +29,5 @@ export {
   CardBody,
   Spinner,
   IconButton,
+  Chip,
 };
