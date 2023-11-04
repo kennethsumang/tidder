@@ -1,10 +1,10 @@
 import {PostChild} from "@/app/_types/reddit";
 import {Card, CardBody, Typography} from "@/app/_components/MaterialTailwind";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+
 import {ArrowUpIcon} from "@heroicons/react/24/solid";
 import {ChatBubbleLeftIcon, ClockIcon} from "@heroicons/react/24/outline";
 import {getRelativeTime} from "@/app/_libraries/date.library";
+import PostBodyMarkdown from "@/app/_components/PostBodyMarkdown";
 
 interface Props {
   post: PostChild;
@@ -20,9 +20,7 @@ export default function PostCard({ post }: Props) {
       <CardBody>
         <div className="flex flex-col">
           <Typography variant="h4">{ post.data.title }</Typography>
-          <Markdown remarkPlugins={[remarkGfm]} className="mt-3 mb-3 post-markdown-cont">
-            { post.data.selftext }
-          </Markdown>
+          <PostBodyMarkdown content={post.data.selftext} className="mt-3 mb-3" />
           <div>
             <small>in /r/{ post.data.subreddit } by { post.data.author}</small>
           </div>
