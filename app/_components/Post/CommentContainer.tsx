@@ -81,7 +81,7 @@ export default function CommentContainer({ comments, author }: Props) {
           }
         </div>
 
-        <Markdown remarkPlugins={[remarkGfm]} className="mb-3">
+        <Markdown remarkPlugins={[remarkGfm]} className="mb-3 post-markdown-cont">
           { comment.data.body }
         </Markdown>
 
