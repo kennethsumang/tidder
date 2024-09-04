@@ -4,8 +4,6 @@ import {PostChild, PostList} from "@/app/_types/reddit";
 import PostEntry from "@/app/_components/PostList/PostEntry";
 import {useState} from "react";
 import {Button, Spinner} from "@/app/_components/MaterialTailwind";
-import {useDispatch} from "react-redux";
-import {setNavbarTitle} from "@/app/_store/slices/app.slice";
 
 interface Props {
   postList: PostList;
@@ -19,9 +17,6 @@ interface Props {
 export default function PostListContainer({ postList, subreddit }: Props) {
   const [ posts, setPosts ] = useState<PostChild[]>(postList.data.children);
   const [ isLoading, setIsLoading ] = useState(false);
-  const dispatch = useDispatch();
-
-  dispatch(setNavbarTitle(`r/${subreddit}`));
 
   /**
    * Handles the load more button click event
